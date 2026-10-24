@@ -1,4 +1,4 @@
-<form class="signup" method="post" action="/api/subscribe">
+<form class="signup"{{ with .id }} id="{{ . }}"{{ end }} method="post" action="/api/subscribe">
   <input type="hidden" name="page" value="{{ .page }}">
   <div class="hp" aria-hidden="true">
     <label>Leave this field empty<input type="text" name="hp_field" tabindex="-1" autocomplete="off" value=""></label>
@@ -17,7 +17,9 @@
   (function () {
     if (new URLSearchParams(location.search).get("joined") !== "1") return;
     document.querySelectorAll(".signup").forEach(function (el) { el.hidden = true; });
-    document.querySelectorAll("[data-joined]").forEach(function (el) {
+    var shown = document.querySelectorAll("[data-joined]");
+    shown.forEach(function (el, i) {
+      if (i > 0) return;
       el.hidden = false;
       el.focus();
     });

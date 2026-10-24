@@ -1,27 +1,40 @@
 {{ define "main" }}
 {{ $s := site.Data.multiverse }}
 <article class="dossier">
-  <p class="kicker">Bonus</p>
-  <h1 class="page-title">{{ $s.dossierTitle }}</h1>
-  <p class="lede">{{ $s.dossierPitch }}</p>
+  <section class="offer" aria-labelledby="offer-title">
+    <figure class="offer-cover">
+      <picture>
+        <source type="image/webp" srcset="/dossier/cover-360.webp 360w, /dossier/cover-720.webp 720w" sizes="(min-width: 800px) 240px, 34vw">
+        <img src="/dossier/cover-720.jpg" srcset="/dossier/cover-360.jpg 360w, /dossier/cover-720.jpg 720w" sizes="(min-width: 800px) 240px, 34vw" width="720" height="932" alt="Cover of the Oracle Dossier PDF." loading="eager" decoding="async">
+      </picture>
+    </figure>
+    <div class="offer-copy">
+      <p class="kicker">Bonus</p>
+      <h1 class="page-title" id="offer-title">Get the full dossier + Chapters 1–2 free</h1>
+      <p class="lede">{{ $s.dossierPitch }}</p>
+      {{ partial "proto/signup.html" (dict "page" .RelPermalink "id" "get" "button" "Get the dossier" "thanks" $s.dossierThanks "download" $s.dossierFile "downloadLabel" "Download the dossier (PDF)") }}
+      <p class="fine">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
 
   <h2 class="section-label">Characters</h2>
   <ul class="slots">
     <li>
       <figure class="frame open">
         <picture>
-          <source type="image/webp" srcset="/dossier/kid-420.webp 420w, /dossier/kid-720.webp 720w" sizes="(min-width: 800px) 22vw, 46vw">
-          <img src="/dossier/kid-720.jpg" srcset="/dossier/kid-420.jpg 420w, /dossier/kid-720.jpg 720w" sizes="(min-width: 800px) 22vw, 46vw" width="720" height="960" alt="Portrait of Kid." loading="eager" decoding="async">
+          <source type="image/webp" srcset="/dossier/julia-420.webp 420w, /dossier/julia-720.webp 720w" sizes="(min-width: 800px) 22vw, 46vw">
+          <img src="/dossier/julia-720.jpg" srcset="/dossier/julia-420.jpg 420w, /dossier/julia-720.jpg 720w" sizes="(min-width: 800px) 22vw, 46vw" width="720" height="960" alt="Portrait of Julia White, platinum-white hair and an ivory coat, on a rooftop above a night city." loading="lazy" decoding="async">
         </picture>
       </figure>
-      <p class="slot-label">Kid</p>
+      <p class="slot-label">Julia</p>
+      <p class="slot-note">Prime Minister of Terra and the human face of its technology.</p>
     </li>
     {{ range seq 3 }}
     <li>
-      <div class="frame locked" role="img" aria-label="Locked character portrait. In the download.">
+      <a class="frame locked" href="#get" data-to-form aria-label="Locked character portrait. Get the free dossier to see it.">
         {{ partial "proto/silhouette.html" (dict "kind" "character") }}
         <span class="lock">Locked</span>
-      </div>
+      </a>
       <p class="slot-label">Character</p>
       <p class="slot-note">In the download</p>
     </li>
@@ -50,10 +63,10 @@
     </li>
     {{ range seq 2 }}
     <li>
-      <div class="frame locked" role="img" aria-label="Locked scene. In the download.">
+      <a class="frame locked" href="#get" data-to-form aria-label="Locked scene. Get the free dossier to see it.">
         {{ partial "proto/silhouette.html" (dict "kind" "scene") }}
         <span class="lock">Locked</span>
-      </div>
+      </a>
       <p class="slot-label">Scene</p>
       <p class="slot-note">In the download</p>
     </li>
@@ -63,16 +76,42 @@
   <h2 class="section-label">Sample</h2>
   <ul class="slots novel">
     <li>
-      <div class="frame locked" role="img" aria-label="Locked Chapters 1–2 graphic novel sample. In the download.">
+      <a class="frame locked" href="#get" data-to-form aria-label="Locked Chapters 1–2 graphic novel sample. Get the free dossier to read it.">
         {{ partial "proto/silhouette.html" (dict "kind" "novel") }}
         <span class="lock">Locked</span>
-      </div>
+      </a>
       <p class="slot-label">Chapters 1–2 graphic novel</p>
       <p class="slot-note">In the download</p>
     </li>
   </ul>
 
-  {{ partial "proto/signup.html" (dict "page" .RelPermalink "button" "Get the dossier" "thanks" $s.dossierThanks "download" $s.dossierFile "downloadLabel" "Download the dossier (PDF)") }}
-  <p class="fine">{{ $s.dossierLeave }}</p>
+  <section class="offer-repeat" aria-label="Get the dossier">
+    <h2 class="section-label">Get the full dossier + Chapters 1–2 free</h2>
+    {{ partial "proto/signup.html" (dict "page" .RelPermalink "id" "get-bottom" "button" "Get the dossier" "thanks" $s.dossierThanks "download" $s.dossierFile "downloadLabel" "Download the dossier (PDF)") }}
+    <p class="fine">No spam. Unsubscribe anytime.</p>
+  </section>
 </article>
+<a class="sticky-cta" href="#get" data-to-form hidden>Get the free dossier</a>
+<script>
+(function () {
+  var bar = document.querySelector(".sticky-cta");
+  var joined = new URLSearchParams(location.search).get("joined") === "1";
+  function toForm(e) {
+    var input = document.querySelector("#get input[type=email]");
+    if (!input || joined) return;
+    e.preventDefault();
+    document.getElementById("get").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    input.focus({ preventScroll: true });
+  }
+  document.querySelectorAll("[data-to-form]").forEach(function (el) { el.addEventListener("click", toForm); });
+  if (joined) document.querySelectorAll(".offer-repeat").forEach(function (el) { el.hidden = true; });
+  if (!bar || joined || !("IntersectionObserver" in window)) return;
+  var visible = new Set();
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { en.isIntersecting ? visible.add(en.target) : visible.delete(en.target); });
+    bar.hidden = visible.size > 0;
+  });
+  document.querySelectorAll(".signup, .joined").forEach(function (el) { io.observe(el); });
+})();
+</script>
 {{ end }}
