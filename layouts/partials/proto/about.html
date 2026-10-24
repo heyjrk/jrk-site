@@ -1,0 +1,16 @@
+{{ $s := site.Data.multiverse -}}
+<section id="about" class="about">
+  <h2>About the author</h2>
+  <figure>
+    <picture>
+      <source type="image/webp" srcset="/img/jrk-360.webp 360w, /img/jrk.webp 720w" sizes="200px">
+      <img src="/img/jrk.jpg" width="720" height="960" alt="John R. Kowalsky in a cap and sunglasses" loading="lazy" decoding="async">
+    </picture>
+  </figure>
+  <h3>{{ $s.aboutHeading }}</h3>
+  {{ range $s.about }}<p>{{ . }}</p>{{ end }}
+  {{ partial "proto/social.html" . }}
+  <p class="signoff">{{ $s.signoff }}<br>{{ $s.signature }}</p>
+  <h3>Contact</h3>
+  <p>General Inquiries<br><a href="mailto:{{ $s.email }}">{{ $s.email }}</a></p>
+</section>

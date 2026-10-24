@@ -1,0 +1,5 @@
+<nav aria-label="Site">
+  <a href="{{ relURL "" }}#books">Books</a>
+  <a href="{{ relURL "" }}#about">About</a>
+  <a href="{{ relURL "bonus/" }}"{{ if eq .RelPermalink "/bonus/" }} aria-current="page"{{ end }}>Bonus</a>
+</nav>

@@ -1,0 +1,25 @@
+<form class="signup" method="post" action="/api/subscribe">
+  <input type="hidden" name="page" value="{{ .page }}">
+  <div class="hp" aria-hidden="true">
+    <label>Leave this field empty<input type="text" name="hp_field" tabindex="-1" autocomplete="off" value=""></label>
+  </div>
+  <label>
+    <span class="email-label">Email</span>
+    <input type="email" name="email" required autocomplete="email" inputmode="email" maxlength="254" spellcheck="false">
+  </label>
+  <button type="submit">{{ .button | default "Sign up" }}</button>
+</form>
+<div class="joined" data-joined hidden role="status" tabindex="-1">
+  <p>{{ .thanks | default "You're on the list. You'll be the first to hear about new releases." }}</p>
+  {{ with .download }}<p><a class="download-btn" href="{{ . }}" download>{{ $.downloadLabel | default "Download" }}</a></p>{{ end }}
+</div>
+<script>
+  (function () {
+    if (new URLSearchParams(location.search).get("joined") !== "1") return;
+    document.querySelectorAll(".signup").forEach(function (el) { el.hidden = true; });
+    document.querySelectorAll("[data-joined]").forEach(function (el) {
+      el.hidden = false;
+      el.focus();
+    });
+  })();
+</script>

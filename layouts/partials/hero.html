@@ -1,13 +1,12 @@
 <div class="hero min-h-fit py-8">
   <div class="hero-content flex-col lg:flex-row">
-    {{ with resources.GetMatch "img/m_series.png" }}
-    <img
-      src="{{ .RelPermalink }}"
-      class="max-w-sm sm:max-w-3xl bg-transparent rounded-lg"
-      height="{{.Height}}"
-      width="{{.Width}}"
-    />
-    {{ end }}
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end">
+      {{ range site.Data.multiverse.books }}
+      <a href="{{ printf "books/%s/" .id | relURL }}" style="width:8.5rem">
+        {{ partial "proto/cover.html" (dict "book" . "sizes" "(min-width: 1024px) 140px, 40vw" "loading" "eager") }}
+      </a>
+      {{ end }}
+    </div>
     <div>
       <h1 class="text-5xl font-thin py-6 uppercase">The Multiverse Series</h1>
       <p class="py-6 text-lg font-thin">Readers are saying...</p>
@@ -21,7 +20,7 @@
         including the spy thriller, mad scientist, and invasion to build its own
         epic universe, but I don't want to give anything away.”
       </p>
-      <a href="https://www.amazon.com/dp/B07MC5J3CB"
+      <a href="{{ relURL "books/oracle/" }}"
         ><button class="btn btn-primary text-lg">Get Started</button></a
       >
     </div>

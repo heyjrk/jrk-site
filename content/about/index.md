@@ -1,5 +1,6 @@
 ---
-title: jrk - about
+title: About
+description: "About John R. Kowalsky, author of the Multiverse Series. Boise, Idaho by way of Nashville."
 type: about
 ---
 
@@ -21,7 +22,9 @@ Cheers, and thanks for reading!
 
 -- jrk
 
-{{< figure src="jrk_author_pic.jpg" height="200" width="200" >}}
+[X @johnkowalsky](https://x.com/johnkowalsky) · [heyjrk.com](https://heyjrk.com) · [smallbetlabs.com](https://smallbetlabs.com)
+
+{{< figure src="/img/jrk.webp" alt="John R. Kowalsky in a cap and sunglasses" >}}
 
 ---
 

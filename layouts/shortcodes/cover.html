@@ -1,0 +1,6 @@
+{{ $matches := where site.Data.multiverse.books "id" .Page.File.ContentBaseName -}}
+{{ with index $matches 0 -}}
+<figure class="w-1/2 max-w-xs">
+  {{ partial "proto/cover.html" (dict "book" . "sizes" "(min-width: 640px) 240px, 70vw" "loading" "lazy") }}
+</figure>
+{{ end -}}

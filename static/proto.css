@@ -1,0 +1,140 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+figure { margin: 0; }
+
+p { margin: 0.75rem 0; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  background: #fff;
+  color: #111;
+  padding: 0.45rem 0.7rem;
+  z-index: 10;
+}
+
+.skip:focus { top: 0.75rem; }
+
+.hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.buy {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 28rem;
+  margin-top: 1.25rem;
+  padding-left: 1px;
+}
+
+.buy a {
+  flex: 1 1 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  margin: 0 0 -1px -1px;
+  border: 1px solid currentColor;
+  text-decoration: none;
+  text-align: center;
+  background: transparent;
+  color: inherit;
+}
+
+.ku {
+  flex: 1 0 100%;
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+}
+
+.signup {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 26rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.signup label { display: grid; gap: 0.35rem; }
+
+.signup input[type="email"] {
+  font: inherit;
+  font-size: 1rem;
+  min-height: 44px;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+}
+
+.signup button {
+  min-height: 44px;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+}
+
+.joined {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  max-width: 38rem;
+  font-weight: 600;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.15rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bonus ul { margin: 0.4rem 0 1rem; padding-left: 1.2rem; }
+
+.bonus li { margin: 0.35rem 0; }
+
+.about::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.kicker,
+.saying { margin: 0; }
+
+.book,
+#about,
+#bonus { scroll-margin-top: 5rem; }
+
+.book-copy p,
+.about p,
+.bonus p,
+.bonus li { max-width: 65ch; }

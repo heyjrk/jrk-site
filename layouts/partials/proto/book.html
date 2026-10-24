@@ -1,0 +1,14 @@
+{{ $book := .book -}}
+<article class="book" id="{{ $book.id }}">
+  <figure>
+    {{ partial "proto/cover.html" (dict "book" $book "sizes" .sizes "loading" (.loading | default "lazy") "fetchpriority" .fetchpriority) }}
+  </figure>
+  <div class="book-copy">
+    <p class="kicker">{{ $book.label }}</p>
+    <h2>{{ $book.title }}</h2>
+    <p class="hook">{{ $book.hook }}</p>
+    {{ range $book.grafs }}<p>{{ . }}</p>{{ end }}
+    {{ with $book.facts }}<p class="facts">{{ . }}</p>{{ end }}
+    {{ partial "proto/buy.html" $book }}
+  </div>
+</article>
