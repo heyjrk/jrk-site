@@ -1,4 +1,9 @@
-baseURL = 'https://realjrk.com'
+baseURL = 'https://realjrk.com/'
 languageCode = 'en-us'
-title = 'Author | JRK'
+title = 'John R. Kowalsky'
 enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  description = "Science fiction by John R. Kowalsky. The Multiverse Series: Oracle, Exiled, and Kid's Play."
+  author = "John R. Kowalsky"

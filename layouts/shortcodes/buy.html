@@ -1,0 +1,4 @@
+{{ $matches := where site.Data.multiverse.books "id" .Page.File.ContentBaseName -}}
+{{ with index $matches 0 -}}
+  {{ partial "proto/buy.html" . }}
+{{ end -}}

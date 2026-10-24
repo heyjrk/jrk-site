@@ -3,19 +3,17 @@ title: "Exiled"
 date: 2024-06-02T17:34:33-06:00
 draft: false
 weight: 2
-image: "img/exiled.png"
-summary: "The Oculus has been destroyed, but the damage is already done."   
+summary: "The Oculus has been destroyed, but the damage is already done."
+description: "The Oculus has been destroyed, but the damage is already done."
 ---
 
 # Exiled
 
 ## Book Two of the Multiverse Series
 
-{{< figure src="/img/exiled.png" class="w-1/3" alt="exiled book cover" >}}
+{{< cover >}}
 
-{{< rawhtml >}}
-<a href="https://www.amazon.com/dp/B07MJVQM97"><button class="btn btn-primary">Buy Exiled Now</button></a>
-{{< /rawhtml >}}
+{{< buy >}}
 
 ### _The Oculus has been destroyed, but the damage is already done._
 
@@ -29,6 +27,4 @@ With the military and government in shambles, Desmond must organize the resistan
 
 Meanwhile, with each moment that passes, the true villain grows more and more powerful in the shadows, threatening both Gaian and Terran alike. Will Desmond, Celia, and Kid be able to turn back the Terran invasion and stop the emerging menace? Or will they be forced to choose between the people they love and an unspeakable fate?
 
-{{< rawhtml >}}
-<a href="https://www.amazon.com/dp/B07MJVQM97"><button class="btn btn-primary">Buy Exiled Now</button></a>
-{{< /rawhtml >}}
+{{< buy >}}

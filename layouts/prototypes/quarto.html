@@ -1,0 +1,185 @@
+{{ define "main" }}
+{{ $oracleAlt := "" }}
+{{ range where site.Data.multiverse.books "id" "oracle" }}{{ $oracleAlt = .alt }}{{ end }}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f1ea">
+    {{ partial "social-meta.html" (dict "title" .Title "description" .Description "path" .RelPermalink "image" "/covers/oracle-832.jpg" "imageAlt" $oracleAlt) }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/proto.css">
+    <style>
+      body {
+        background: #f4f1ea;
+        color: #1c1915;
+        font-family: Fraunces, Palatino, "Palatino Linotype", Georgia, serif;
+        font-size: 1.125rem;
+        line-height: 1.55;
+      }
+      .brand, .top nav, .kicker, .section-label, .buy, .signup button, .facts, .ku, .shelf figcaption, .site-foot, .email-label {
+        font-family: Outfit, "Avenir Next", "Segoe UI", sans-serif;
+      }
+      .wrap { width: min(1080px, calc(100% - 2.4rem)); margin: 0 auto; }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem 1.5rem;
+        align-items: baseline;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: #f4f1ea;
+        border-bottom: 1px solid #1c1915;
+        padding: 0.95rem 0;
+      }
+      .brand { text-decoration: none; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.78rem; }
+      .top nav { display: flex; flex-wrap: wrap; gap: 0.9rem 1.15rem; }
+      .top nav a { text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; }
+      .hero { padding: 3.5rem 0 2.2rem; }
+      h1 {
+        font-family: Outfit, "Avenir Next", sans-serif;
+        font-weight: 520;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin: 0 0 1.4rem;
+      }
+      .saying { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.75rem; font-family: Outfit, sans-serif; }
+      .hero blockquote { margin: 0.85rem 0 0; }
+      .hero blockquote p {
+        font-weight: 460;
+        font-style: italic;
+        font-size: clamp(2.05rem, 5.2vw, 3.85rem);
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        margin: 0;
+      }
+      .hero blockquote + blockquote p {
+        font-size: clamp(1.25rem, 2.3vw, 1.7rem);
+        color: #3f3a33;
+        margin-top: 1rem;
+      }
+      .shelf {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 64%;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        border-top: 1px solid #1c1915;
+        margin-top: 2.4rem;
+        padding: 1.4rem 0 0.4rem;
+      }
+      .shelf figure { scroll-snap-align: start; }
+      .shelf a { display: block; }
+      .shelf img { box-shadow: 0 16px 28px rgba(28, 25, 21, 0.16); }
+      .shelf figcaption {
+        margin-top: 0.7rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .section-label {
+        margin: 2.8rem 0 0;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .book {
+        display: grid;
+        grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+        gap: 1.6rem 2rem;
+        padding: 2.4rem 0;
+        border-top: 1px solid #ddd4c6;
+      }
+      .book h2, .about h2, .bonus h2 {
+        font-weight: 560;
+        font-size: clamp(2.1rem, 4vw, 3.15rem);
+        letter-spacing: -0.03em;
+        line-height: 0.98;
+        margin: 0.2rem 0 0.45rem;
+      }
+      .kicker { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.75rem; }
+      .hook { font-style: italic; font-size: 1.22rem; }
+      .facts, .ku { color: #5e584e; }
+      .about, .bonus { border-top: 1px solid #ddd4c6; padding: 2.4rem 0; }
+      .about h3, .bonus h3 { font-size: 1.2rem; margin: 1.3rem 0 0.3rem; }
+      .about figure { float: left; width: min(200px, 46vw); margin: 0.3rem 1.4rem 0.8rem 0; }
+      .signoff { font-style: italic; }
+      .buy { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.78rem; }
+      .buy a:hover, .buy a:focus-visible { background: #1c1915; color: #f4f1ea; }
+      .signup input {
+        background: transparent;
+        color: inherit;
+        border: 0;
+        border-bottom: 1px solid #1c1915;
+        border-radius: 0;
+      }
+      .signup button {
+        background: #1c1915;
+        color: #f4f1ea;
+        border: 1px solid #1c1915;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .joined { background: #1c1915; color: #f4f1ea; }
+      .site-foot {
+        border-top: 1px solid #1c1915;
+        padding: 1.4rem 0 3rem;
+        font-size: 0.88rem;
+      }
+      @media (min-width: 860px) {
+        .shelf {
+          grid-auto-flow: initial;
+          grid-template-columns: repeat(3, 1fr);
+          overflow: visible;
+        }
+      }
+      @media (max-width: 700px) {
+        .book { grid-template-columns: 1fr; }
+        .book figure { max-width: 230px; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#books">Skip to the books</a>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="/prototypes/quarto/">John R. Kowalsky</a>
+        {{ partial "proto/nav.html" . }}
+      </header>
+      <main>
+        <section class="hero">
+          <h1>{{ site.Data.multiverse.series }}</h1>
+          {{ partial "proto/quotes.html" . }}
+          <div class="shelf">
+            {{ range site.Data.multiverse.books }}
+            <figure>
+              <a href="#{{ .id }}">
+                {{ partial "proto/cover.html" (dict "book" . "sizes" "(min-width: 860px) 30vw, 70vw" "loading" "eager") }}
+              </a>
+              <figcaption>{{ .title }}</figcaption>
+            </figure>
+            {{ end }}
+          </div>
+        </section>
+        <section id="books">
+          <h2 class="section-label">Books</h2>
+          {{ range site.Data.multiverse.books }}
+            {{ partial "proto/book.html" (dict "book" . "sizes" "(min-width: 800px) 200px, 70vw" "loading" "lazy") }}
+          {{ end }}
+        </section>
+        {{ partial "proto/about.html" . }}
+        {{ partial "proto/bonus.html" . }}
+      </main>
+      {{ partial "proto/footer.html" . }}
+    </div>
+  </body>
+</html>
+{{ end }}

@@ -1,0 +1,142 @@
+{{ define "main" }}
+{{ $playAlt := "" }}
+{{ range where site.Data.multiverse.books "id" "kids-play" }}{{ $playAlt = .alt }}{{ end }}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0e1318">
+    {{ partial "social-meta.html" (dict "title" .Title "description" .Description "path" .RelPermalink "image" "/covers/kids-play-832.jpg" "imageAlt" $playAlt) }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/proto.css">
+    <style>
+      body {
+        background: #0e1318;
+        color: #e7eef5;
+        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.55;
+      }
+      .kicker, .rail, .saying, .facts, .ku, .section-label, .site-foot, .buy, .email-label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+      }
+      .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 100svh; }
+      .rail {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        overflow: auto;
+        padding: 1.35rem 1.05rem 2rem;
+        border-right: 1px solid #2a3644;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        background: #0e1318;
+      }
+      .brand { color: inherit; text-decoration: none; font-size: 0.95rem; }
+      .series { color: #9aabba; font-size: 0.75rem; margin: 0 0 1rem; }
+      .rail nav { display: flex; flex-direction: column; gap: 0.15rem; }
+      .rail nav a {
+        text-decoration: none;
+        display: flex;
+        gap: 0.65rem;
+        padding: 0.38rem 0;
+      }
+      .rail nav span { color: #7fd3ff; min-width: 1.7rem; }
+      .stage { padding: 2rem 4vw 2.5rem; max-width: 980px; }
+      h1 {
+        font-weight: 560;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.03em;
+        margin: 0 0 1.2rem;
+      }
+      .book {
+        display: grid;
+        grid-template-columns: minmax(150px, 230px) minmax(0, 1fr);
+        gap: 1.5rem;
+        padding: 1.8rem 0;
+        border-top: 1px solid #2a3644;
+      }
+      .book:target { box-shadow: inset 3px 0 0 #7fd3ff; }
+      .book figure { border: 1px solid #2a3644; }
+      .book h2 { margin: 0.15rem 0 0.4rem; font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing: -0.03em; font-weight: 560; }
+      .kicker, .section-label { color: #9aabba; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; }
+      .section-label { margin: 0 0 0.4rem; }
+      .hook { color: #d5e2ee; }
+      .facts, .ku { color: #9aabba; }
+      .quotes { border-top: 1px solid #2a3644; padding-top: 1.4rem; margin-top: 0.6rem; }
+      .saying { color: #9aabba; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+      .quotes blockquote { margin: 0.55rem 0; }
+      .quotes blockquote p { margin: 0; color: #c5d2de; }
+      .about, .bonus { border-top: 1px solid #2a3644; padding-top: 1.6rem; margin-top: 1.2rem; }
+      .about h2, .bonus h2 { font-size: 1.7rem; margin: 0 0 0.7rem; font-weight: 560; }
+      .about h3, .bonus h3 { font-size: 1rem; margin: 1.2rem 0 0.25rem; font-weight: 560; }
+      .about figure { float: left; width: min(180px, 42vw); margin: 0.2rem 1.2rem 0.6rem 0; border: 1px solid #2a3644; }
+      .buy { font-size: 0.82rem; }
+      .buy a:hover, .buy a:focus-visible { background: #7fd3ff; color: #071016; border-color: #7fd3ff; }
+      .signup input, .signup button { background: #0e1318; color: inherit; border: 1px solid #2a3644; }
+      .signup button:hover, .signup button:focus-visible { border-color: #7fd3ff; color: #7fd3ff; }
+      .joined { background: #7fd3ff; color: #071016; }
+      .site-foot { border-top: 1px solid #2a3644; margin-top: 2rem; padding-top: 1.1rem; color: #9aabba; font-size: 0.8rem; }
+      @media (max-width: 800px) {
+        .shell { grid-template-columns: 1fr; }
+        .rail {
+          position: sticky;
+          top: 0;
+          height: auto;
+          z-index: 4;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+          border-right: 0;
+          border-bottom: 1px solid #2a3644;
+          padding: 0.7rem 0.9rem;
+        }
+        .series { display: none; }
+        .rail nav { flex-direction: row; overflow-x: auto; gap: 0.85rem; }
+        .rail nav a { white-space: nowrap; padding: 0.2rem 0; }
+        .book { grid-template-columns: 1fr; }
+        .book figure { max-width: 230px; }
+        .stage { padding-top: 1.3rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#books">Skip to the books</a>
+    <div class="shell">
+      <aside class="rail">
+        <a class="brand" href="/prototypes/construct/">John R. Kowalsky</a>
+        <p class="series">{{ site.Data.multiverse.series }}</p>
+        <nav aria-label="Files">
+          {{ range $i, $book := site.Data.multiverse.books }}
+          <a href="#{{ $book.id }}"><span>{{ printf "%02d" (add $i 1) }}</span>{{ $book.title }}</a>
+          {{ end }}
+          <a href="#about"><span></span>About</a>
+          <a href="#bonus"><span></span>Bonus</a>
+          <a href="{{ site.Data.multiverse.substack }}" rel="noopener noreferrer"><span></span>Blog</a>
+        </nav>
+      </aside>
+      <main class="stage">
+        <h1>{{ site.Data.multiverse.series }}</h1>
+        <section id="books">
+          <h2 class="section-label">Books</h2>
+          {{ range $i, $book := site.Data.multiverse.books }}
+            {{ $loading := "lazy" }}
+            {{ if eq $i 0 }}{{ $loading = "eager" }}{{ end }}
+            {{ partial "proto/book.html" (dict "book" $book "sizes" "(min-width: 900px) 230px, 72vw" "loading" $loading) }}
+          {{ end }}
+        </section>
+        <div class="quotes">
+          {{ partial "proto/quotes.html" . }}
+        </div>
+        {{ partial "proto/about.html" . }}
+        {{ partial "proto/bonus.html" . }}
+        {{ partial "proto/footer.html" . }}
+      </main>
+    </div>
+  </body>
+</html>
+{{ end }}

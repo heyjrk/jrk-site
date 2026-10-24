@@ -1,0 +1,71 @@
+author: John R. Kowalsky
+series: The Multiverse Series
+email: johnrkowalsky@gmail.com
+substack: https://realjrk.substack.com
+x: https://x.com/johnkowalsky
+xHandle: "@johnkowalsky"
+heyjrk: https://heyjrk.com
+smallbet: https://smallbetlabs.com
+saying: "Readers are saying..."
+quotes:
+  - "A world of magic meets a world of science and then the bullets start to fly..."
+  - "...a cold war between two universes, which is on a knife's edge from turning into a hot one. The Multiverse Series blends several genres including the spy thriller, mad scientist, and invasion to build its own epic universe, but I don't want to give anything away."
+bonusIntro: "Sign up for jrk's substack to get access to bonus content such as:"
+bonus:
+  - "Free Advanced Reader Copies (ARCs)"
+  - "Behind the scenes content such as first drafts, outlines, and notes"
+  - "Deleted scenes"
+  - "Alternate endings"
+  - "Be the first to hear about new releases"
+bonusFree: "Signing up is free or you can choose to be a monthly or yearly patron."
+bonusLeave: "You can unsubscribe at any time."
+aboutHeading: "How It All Started..."
+about:
+  - "My earliest memories of reading were the biographies of pioneers and the childhood classics that were packaged for young children with plenty of pictures. I would read under the covers with a flashlight. When the flashlight ran out of batteries (sometimes it would be months before I could scrounge up more), I would sleep on the floor in the doorway of the room that I shared with my brothers, so that I could read by the light of the hallway. When I heard someone coming, I would hide the book under my pillow and feign sleep. My favorite book was an illustrated version of Call of the Wild by Jack London. I must have read that thing a hundred times before I turned twelve. Still to this day, I fantasize, from time to time, about running away from civilization to the wild... Getting away from it all, but let's face it, the wifi is shit out there."
+  - "The stories of early pioneers may have gotten me hooked on reading, but it wasn't until I was a teenager that the writing bug started to nibble at me. I discovered girls and guitars and poetry and songwriting and athletics, but more than that, I found sci-fi and fantasy that I could escape to when the world outside my room didn't seem like the friendliest of places."
+  - "Slowly, over the years, I came to realize the power that stories have to touch readers and change their lives, even if it's only to provide a brief respite from the harsher edges of reality. Stories have given my life so much enrichment, and I couldn't be happier to have the chance to give some of that back to the world."
+  - "These days, I hail from Boise, ID by way of Nashville, TN. I enjoy family and tacos and jiu-jitsu and the occasional cold beer."
+  - "Nothing makes the long days quite so worth it as to hear from a reader who has found enjoyment in the tales I’ve spun, so please do find me on social media or shoot me a quick email. I’d love to hear from you!"
+signoff: "Cheers, and thanks for reading!"
+signature: "-- jrk"
+books:
+  - id: oracle
+    title: Oracle
+    label: Book One of the Multiverse Series
+    hook: "Secret nanotechnology. Humans with incredible powers. One family's secret threatens to shatter the uneasy peace between worlds."
+    facts: "January 8, 2019. 2nd edition. 326 pages. 4.5 out of 5 from 41 Amazon ratings."
+    alt: "Cover of Oracle. A man in dark armor runs forward, a woman behind him, and a large portrait of an older man, against a glowing blue network and a city on the horizon."
+    kindle: https://www.amazon.com/dp/B07MC5J3CB
+    paperback: https://www.amazon.com/dp/1792703198
+    audiobook: https://www.amazon.com/dp/B0F3GX43SQ
+    grafs:
+      - "Desmond Bishop is struggling with his recent retirement from the Gaian Defense Agency, when his daughter, Celia, calls him out of the blue."
+      - "Multiple kidnappings have taken place overnight in what appears to be a coordinated effort by agents of the Seventh Verse."
+      - "For years, Desmond warned the GDA that an attack like this was possible, but they didn't want to listen. Now, he's more than content to let them clean up their own mess, but a sinister family secret drags him back into the fold."
+      - "Together, Desmond and Celia must uncover the truth about the hidden menace that threatens to destroy their entire world and find a way to stop it before they lose everything they hold dear."
+  - id: exiled
+    title: Exiled
+    label: Book Two of the Multiverse Series
+    hook: "The Oculus has been destroyed, but the damage is already done."
+    facts: ""
+    alt: "Cover of Exiled. A man in dark armor runs through rubble with gold energy around his hands, a woman running behind him, and a ruined city under storm clouds."
+    kindle: https://www.amazon.com/dp/B07MJVQM97
+    paperback: https://www.amazon.com/dp/1793953465
+    audiobook: https://www.amazon.com/dp/B0F3GYK71Z
+    grafs:
+      - "Gaia has been overrun by the Terran invasion. Hordes of Gaians are forced into massive internment camps where they are given a nanite treatment that will alter their genetic code and cut them off from the flux forever."
+      - "On the run, Celia leads a small band of refugees through the countryside, trying to stay one step ahead of the Terran patrols and keep herself and her people free."
+      - "After destroying the Oculus, Kid finds himself back on Gaia with several weeks missing from his memory. When he discovers a brand new ability tied together with powers beyond his control, he could very well be the key to victory against the Terrans. But first, he must learn to harness his raw potential from a mysterious stranger."
+      - "With the military and government in shambles, Desmond must organize the resistance and find a way to turn the tide of the invasion and free his people before they are stripped of the very thing which makes them Gaian."
+      - "Meanwhile, with each moment that passes, the true villain grows more and more powerful in the shadows, threatening both Gaian and Terran alike. Will Desmond, Celia, and Kid be able to turn back the Terran invasion and stop the emerging menace? Or will they be forced to choose between the people they love and an unspeakable fate?"
+  - id: kids-play
+    title: "Kid's Play"
+    label: Book Three of the Multiverse Series
+    hook: "When you are forced to make an impossible choice, can you live with the person you must become to survive?"
+    facts: ""
+    alt: "Cover of Kid's Play. A man in a visor and lit armor reaches forward with a beam of light, a woman running behind him through a blue digital city."
+    kindle: https://www.amazon.com/dp/B07P86ZLGN
+    paperback: https://www.amazon.com/dp/1795046430
+    audiobook: https://www.amazon.com/dp/B0F3G7QN6W
+    grafs:
+      - "With the fate of millions on the line, Kid is forced to play the Mother’s twisted game of life and death within the VR construct of the Ark. He must find a way to overpower her and defeat her once and for all."

@@ -12,15 +12,16 @@
   <div
     class="card sm:card-side bg-base-300 shadow-xl shadow-violet-400/40 my-4 opacity-90"
   >
-    {{ if .Params.image }} {{with resources.GetMatch .Params.image }}
+    {{ $book := index (where site.Data.multiverse.books "id" .File.ContentBaseName) 0 }}
+    {{ with $book }}
     <figure class="m-4 sm:w-1/6 w-1/2">
-      <img src="{{ .RelPermalink }}" alt="{{ .Title }}" />
+      {{ partial "proto/cover.html" (dict "book" . "sizes" "(min-width: 640px) 160px, 46vw" "loading" "lazy") }}
     </figure>
-    {{ end }} {{ end }}
+    {{ end }}
 
     <div class="card-body">
       <h2 class="card-title">{{ .LinkTitle }}</h2>
-      <p>{{ .Summary }}..</p>
+      <p>{{ .Summary }}</p>
       <div class="card-actions justify-end">
         <a href="{{ .RelPermalink }}">
           <button class="btn btn-primary">More Info</button>

@@ -1,0 +1,12 @@
+{{ $s := site.Data.multiverse -}}
+<section id="bonus" class="bonus">
+  <h2>Bonus Content</h2>
+  <p>{{ $s.bonusIntro }}</p>
+  <ul>
+    {{ range $s.bonus }}<li>{{ . }}</li>{{ end }}
+  </ul>
+  <p><a href="{{ $s.substack }}" rel="noopener noreferrer">Signing up</a> is free or you can choose to be a monthly or yearly patron.</p>
+  <p>{{ $s.bonusLeave }}</p>
+  <h3>Be the first to hear about new releases</h3>
+  {{ partial "proto/signup.html" (dict "page" .RelPermalink) }}
+</section>

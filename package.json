@@ -3,7 +3,8 @@
     "start": "concurrently npm:watch:*",
     "watch:tw": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "watch:hugo": "hugo server -D --disableFastRender",
-    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify && hugo --minify"
+    "build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify && hugo --minify",
+    "test:signups": "node --test functions/subscribe.test.mjs"
   },
   "devDependencies": {
     "@tailwindcss/typography": "github:tailwindcss/typography",

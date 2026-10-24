@@ -1,6 +1,7 @@
 public/
 *.lock
 node_modules/
+.dev.vars
 .DS_Store
 .vscode
 z.md

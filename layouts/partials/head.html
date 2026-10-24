@@ -14,6 +14,38 @@
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{{ .Page.Title }}</title>
-{{ $styles := resources.Get "/css/output.css"}}
+{{ $desc := .Description }}
+{{ if not $desc }}{{ $desc = .Params.summary }}{{ end }}
+{{ if not $desc }}{{ $desc = site.Params.description }}{{ end }}
+{{ $title := site.Title }}
+{{ if not .IsHome }}{{ $title = printf "%s · %s" .Title site.Title }}{{ end }}
+{{ $image := "/covers/oracle-832.jpg" }}
+{{ $imageAlt := "" }}
+{{ range where site.Data.multiverse.books "id" "oracle" }}
+  {{ $imageAlt = .alt }}
+{{ end }}
+{{ $base := "" }}
+{{ with .File }}{{ $base = .ContentBaseName }}{{ end }}
+{{ range where site.Data.multiverse.books "id" $base }}
+  {{ $image = printf "/covers/%s-832.jpg" .id }}
+  {{ $imageAlt = .alt }}
+{{ end }}
+{{ partial "social-meta.html" (dict "title" $title "description" $desc "path" .RelPermalink "image" $image "imageAlt" $imageAlt) }}
+{{ $styles := resources.Get "/css/output.css" }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+<style>
+  .buy { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; padding-left: 0; max-width: none; }
+  .buy a {
+    flex: 0 1 auto;
+    margin: 0;
+    border: 0;
+    border-radius: var(--rounded-btn, 0.5rem);
+    background: oklch(var(--p));
+    color: oklch(var(--pc));
+    text-decoration: none;
+    font-weight: 600;
+    min-height: 2.75rem;
+    padding: 0 1rem;
+  }
+  .buy .ku { flex-basis: 100%; margin: 0.2rem 0 0; opacity: 0.8; }
+</style>

@@ -1,0 +1,21 @@
+{{ $book := .book -}}
+{{ $sizes := .sizes | default "(min-width: 800px) 280px, 70vw" -}}
+{{ $loading := .loading | default "lazy" -}}
+<picture>
+  <source
+    type="image/webp"
+    srcset="/covers/{{ $book.id }}-420.webp 420w, /covers/{{ $book.id }}-640.webp 640w, /covers/{{ $book.id }}-832.webp 832w"
+    sizes="{{ $sizes }}"
+  >
+  <img
+    src="/covers/{{ $book.id }}-640.jpg"
+    srcset="/covers/{{ $book.id }}-420.jpg 420w, /covers/{{ $book.id }}-640.jpg 640w, /covers/{{ $book.id }}-832.jpg 832w"
+    sizes="{{ $sizes }}"
+    width="832"
+    height="1248"
+    alt="{{ $book.alt }}"
+    loading="{{ $loading }}"
+    decoding="async"
+    {{ with .fetchpriority }}fetchpriority="{{ . }}"{{ end }}
+  >
+</picture>
