@@ -1,10 +1,37 @@
+{{ $exiled := index (where site.Data.multiverse.books "id" "exiled") 0 }}
 <!doctype html>
-<html data-theme="dracula" lang="en">
+<html lang="en">
   <head>
-    {{ partial "head.html" . }}
+    {{ partial "blackout/meta.html" . }}
   </head>
-  <body class="container mx-auto">
-    {{ partial "nav.html" }} {{ partial "hero.html" . }} {{ partial
-    "footer.html" }}
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N73G4C43" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <a class="skip" href="#books">Skip to the books</a>
+    <header class="hero">
+      <div class="top">
+        {{ partial "blackout/top.html" . }}
+      </div>
+      <div class="hero-copy">
+        <h1>{{ site.Data.multiverse.series }}</h1>
+        <p class="lede">{{ $exiled.hook }}</p>
+        <a class="go" href="#oracle">Get Started</a>
+        {{ partial "proto/quotes.html" . }}
+      </div>
+      <figure class="hero-cover">
+        {{ partial "proto/cover.html" (dict "book" $exiled "sizes" "(min-width: 800px) 42vw, 86vw" "loading" "eager" "fetchpriority" "high") }}
+      </figure>
+    </header>
+    <main>
+      <section id="books">
+        <h2 class="section-label">Books</h2>
+        {{ range site.Data.multiverse.books }}
+          {{ partial "proto/book.html" (dict "book" . "sizes" "(min-width: 800px) 340px, 78vw" "loading" "lazy") }}
+        {{ end }}
+      </section>
+      {{ partial "proto/about.html" . }}
+      {{ partial "proto/bonus.html" . }}
+    </main>
+    {{ partial "proto/footer.html" . }}
   </body>
 </html>

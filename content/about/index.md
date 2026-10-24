@@ -22,7 +22,7 @@ Cheers, and thanks for reading!
 
 -- jrk
 
-[Substack](https://realjrk.substack.com) · [X @johnkowalsky](https://x.com/johnkowalsky) · [heyjrk.com](https://heyjrk.com) · [smallbetlabs.com](https://smallbetlabs.com)
+[X @johnkowalsky](https://x.com/johnkowalsky) · [heyjrk.com](https://heyjrk.com) · [smallbetlabs.com](https://smallbetlabs.com)
 
 {{< figure src="/img/jrk.webp" alt="John R. Kowalsky in a cap and sunglasses" >}}
 

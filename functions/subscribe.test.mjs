@@ -40,24 +40,24 @@ function post(body, { origin = "http://localhost", env, url = "http://localhost/
   });
 }
 
-test("stores a new email and redirects back to the prototype", async () => {
+test("stores a new email and redirects back to the dossier", async () => {
   const kv = new MemoryKV();
   const response = await post(
-    { email: "Reader@Example.com", page: "/prototypes/quarto/", hp_field: "" },
+    { email: "Reader@Example.com", page: "/bonus/", hp_field: "" },
     { env: { SIGNUPS: kv } },
   );
   assert.equal(response.status, 303);
-  assert.equal(response.headers.get("location"), "http://localhost/prototypes/quarto/?joined=1");
+  assert.equal(response.headers.get("location"), "http://localhost/bonus/?joined=1");
   const saved = JSON.parse(kv.store.get("reader@example.com"));
   assert.equal(saved.email, "reader@example.com");
-  assert.equal(saved.page, "/prototypes/quarto/");
+  assert.equal(saved.page, "/bonus/");
   assert.equal(Number.isNaN(Date.parse(saved.created)), false);
 });
 
 test("honeypot skips storage and still looks successful", async () => {
   const kv = new MemoryKV();
   const response = await post(
-    { email: "bot@example.com", page: "/prototypes/blackout/", hp_field: "filled" },
+    { email: "bot@example.com", page: "/bonus/", hp_field: "filled" },
     { env: { SIGNUPS: kv } },
   );
   assert.equal(response.status, 303);
@@ -66,12 +66,12 @@ test("honeypot skips storage and still looks successful", async () => {
 
 test("rejects a bad email and a foreign origin", async () => {
   const kv = new MemoryKV();
-  const bad = await post({ email: "not-an-email", page: "/prototypes/quarto/" }, { env: { SIGNUPS: kv } });
+  const bad = await post({ email: "not-an-email", page: "/bonus/" }, { env: { SIGNUPS: kv } });
   assert.equal(bad.status, 400);
   assert.equal(kv.store.size, 0);
 
   const foreign = await post(
-    { email: "a@b.co", page: "/prototypes/quarto/" },
+    { email: "a@b.co", page: "/bonus/" },
     { env: { SIGNUPS: kv }, origin: "https://evil.example" },
   );
   assert.equal(foreign.status, 403);
@@ -80,27 +80,27 @@ test("rejects a bad email and a foreign origin", async () => {
 
 test("keeps the first signup when the address repeats", async () => {
   const kv = new MemoryKV();
-  await kv.put("a@b.co", JSON.stringify({ email: "a@b.co", created: "2020-01-01T00:00:00.000Z", page: "/prototypes/quarto/" }));
+  await kv.put("a@b.co", JSON.stringify({ email: "a@b.co", created: "2020-01-01T00:00:00.000Z", page: "/bonus/" }));
   const response = await post(
-    { email: "a@b.co", page: "/prototypes/construct/" },
+    { email: "a@b.co", page: "/" },
     { env: { SIGNUPS: kv } },
   );
   assert.equal(response.status, 303);
   assert.equal(JSON.parse(kv.store.get("a@b.co")).created, "2020-01-01T00:00:00.000Z");
 });
 
-test("refuses a return path outside the prototypes", async () => {
+test("refuses a return path outside the site", async () => {
   const kv = new MemoryKV();
   const response = await post(
     { email: "a@b.co", page: "https://evil.example/phish" },
     { env: { SIGNUPS: kv } },
   );
-  assert.equal(response.headers.get("location"), "http://localhost/prototypes/?joined=1");
-  assert.equal(JSON.parse(kv.store.get("a@b.co")).page, "/prototypes/");
+  assert.equal(response.headers.get("location"), "http://localhost/bonus/?joined=1");
+  assert.equal(JSON.parse(kv.store.get("a@b.co")).page, "/bonus/");
 });
 
 test("says the list is unavailable when KV is not bound", async () => {
-  const response = await post({ email: "a@b.co", page: "/prototypes/quarto/" }, { env: {} });
+  const response = await post({ email: "a@b.co", page: "/bonus/" }, { env: {} });
   assert.equal(response.status, 503);
 });
 
@@ -117,8 +117,8 @@ test("export returns csv only with the token", async () => {
       list_complete: true,
     },
   };
-  await kv.put("=a@b.co", JSON.stringify({ email: "=a@b.co", created: "2026-01-01T00:00:00.000Z", page: "/prototypes/quarto/" }));
-  await kv.put("reader@example.com", JSON.stringify({ email: "reader@example.com", created: "2026-02-02T00:00:00.000Z", page: "/prototypes/blackout/" }));
+  await kv.put("=a@b.co", JSON.stringify({ email: "=a@b.co", created: "2026-01-01T00:00:00.000Z", page: "/" }));
+  await kv.put("reader@example.com", JSON.stringify({ email: "reader@example.com", created: "2026-02-02T00:00:00.000Z", page: "/bonus/" }));
 
   const env = { SIGNUPS: kv, EXPORT_TOKEN: "secret-token" };
   const denied = await onRequestGet({
@@ -144,6 +144,6 @@ test("export returns csv only with the token", async () => {
   const csv = await ok.text();
   assert.equal(
     csv,
-    "email,created,page\n'=a@b.co,2026-01-01T00:00:00.000Z,/prototypes/quarto/\nreader@example.com,2026-02-02T00:00:00.000Z,/prototypes/blackout/\n",
+    "email,created,page\n'=a@b.co,2026-01-01T00:00:00.000Z,/\nreader@example.com,2026-02-02T00:00:00.000Z,/bonus/\n",
   );
 });

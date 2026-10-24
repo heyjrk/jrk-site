@@ -1,9 +1,4 @@
-const PAGES = new Set([
-  "/prototypes/",
-  "/prototypes/quarto/",
-  "/prototypes/blackout/",
-  "/prototypes/construct/",
-]);
+const PAGES = new Set(["/", "/bonus/"]);
 
 export function normalizeEmail(value) {
   if (typeof value !== "string") return "";
@@ -17,13 +12,13 @@ export function isEmail(value) {
 }
 
 export function safeReturnPath(raw) {
-  if (typeof raw !== "string") return "/prototypes/";
+  if (typeof raw !== "string") return "/bonus/";
   let path = raw.split("#")[0].split("?")[0].trim();
   if (!path.startsWith("/") || path.startsWith("//") || path.includes("\\")) {
-    return "/prototypes/";
+    return "/bonus/";
   }
   if (path.length > 1 && !path.endsWith("/")) path += "/";
-  return PAGES.has(path) ? path : "/prototypes/";
+  return PAGES.has(path) ? path : "/bonus/";
 }
 
 export function originAllowed(request) {

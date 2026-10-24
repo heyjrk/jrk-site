@@ -1,20 +1,20 @@
 <!doctype html>
-<html data-theme="dracula" lang="en">
+<html lang="en">
   <head>
-    {{ partial "head.html" . }}
+    {{ partial "blackout/meta.html" . }}
   </head>
-  <body class="container mx-auto">
+  <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-N73G4C43"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {{ partial "nav.html" }} {{ block "main" . }} {{ end }}
-    {{ partial "footer.html" . }}
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N73G4C43" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="bar">
+      <div class="top">
+        {{ partial "blackout/top.html" . }}
+      </div>
+    </header>
+    <main id="content">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "proto/footer.html" . }}
   </body>
 </html>

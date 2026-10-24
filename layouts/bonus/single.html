@@ -1,0 +1,34 @@
+{{ define "main" }}
+{{ $s := site.Data.multiverse }}
+<article class="dossier">
+  <p class="kicker">Bonus</p>
+  <h1 class="page-title">{{ $s.dossierTitle }}</h1>
+  <p class="lede">{{ $s.dossierPitch }}</p>
+  <p>{{ $s.dossierAsk }}</p>
+
+  <h2 class="section-label">Character portraits</h2>
+  <ul class="slots">
+    {{ range seq 4 }}
+    <li>
+      <div class="frame"><span class="mark">Placeholder</span></div>
+      <p class="slot-label">Character portrait {{ . }}</p>
+      <p class="slot-note">Art comes later</p>
+    </li>
+    {{ end }}
+  </ul>
+
+  <h2 class="section-label">Scenes</h2>
+  <ul class="slots scenes">
+    {{ range seq 3 }}
+    <li>
+      <div class="frame"><span class="mark">Placeholder</span></div>
+      <p class="slot-label">Scene illustration {{ . }}</p>
+      <p class="slot-note">Art comes later</p>
+    </li>
+    {{ end }}
+  </ul>
+
+  {{ partial "proto/signup.html" (dict "page" .RelPermalink "button" "Get the dossier" "thanks" $s.dossierThanks) }}
+  <p class="fine">{{ $s.dossierLeave }}</p>
+</article>
+{{ end }}

@@ -1,7 +1,5 @@
-{{ $s := site.Data.multiverse -}}
-<nav aria-label="On this page">
-  <a href="#books">Books</a>
-  <a href="#about">About</a>
-  <a href="#bonus">Bonus</a>
-  <a href="{{ $s.substack }}" rel="noopener noreferrer">Blog</a>
+<nav aria-label="Site">
+  <a href="{{ relURL "" }}#books">Books</a>
+  <a href="{{ relURL "" }}#about">About</a>
+  <a href="{{ relURL "bonus/" }}"{{ if eq .RelPermalink "/bonus/" }} aria-current="page"{{ end }}>Bonus</a>
 </nav>

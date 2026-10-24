@@ -1,34 +1,8 @@
 {{ define "main" }}
-<main class="container mx-auto p-6 text-primary">
-  <article class="prose">
-    <header>
-      <h1>{{ .Title }}</h1>
-    </header>
-    <!-- "{{ .Content }}" pulls from the Markdown content of the corresponding _index.md -->
-    {{ .Content }}
-  </article>
-  <!-- Ranges through content/posts/*.md -->
-  {{ range .Pages }}
-  <div
-    class="card sm:card-side bg-base-300 shadow-xl shadow-violet-400/40 my-4 opacity-90"
-  >
-    {{ $book := index (where site.Data.multiverse.books "id" .File.ContentBaseName) 0 }}
-    {{ with $book }}
-    <figure class="m-4 sm:w-1/6 w-1/2">
-      {{ partial "proto/cover.html" (dict "book" . "sizes" "(min-width: 640px) 160px, 46vw" "loading" "lazy") }}
-    </figure>
-    {{ end }}
-
-    <div class="card-body">
-      <h2 class="card-title">{{ .LinkTitle }}</h2>
-      <p>{{ .Summary }}</p>
-      <div class="card-actions justify-end">
-        <a href="{{ .RelPermalink }}">
-          <button class="btn btn-primary">More Info</button>
-        </a>
-      </div>
-    </div>
-  </div>
-  {{ end }}
-</main>
+<div class="sheet">
+  <h1 class="page-title">{{ .Title }}</h1>
+</div>
+{{ range site.Data.multiverse.books }}
+  {{ partial "proto/book.html" (dict "book" . "sizes" "(min-width: 800px) 340px, 78vw" "loading" "lazy") }}
+{{ end }}
 {{ end }}

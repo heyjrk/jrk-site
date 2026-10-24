@@ -1,3 +1,11 @@
 {{ define "main" }}
-<div class="container mx-auto prose p-6">{{ .Content }}</div>
+{{ $book := index (where site.Data.multiverse.books "id" .File.ContentBaseName) 0 }}
+{{ with $book }}
+  {{ partial "proto/book.html" (dict "book" . "sizes" "(min-width: 800px) 340px, 78vw" "loading" "eager") }}
+{{ else }}
+  <article class="sheet">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+{{ end }}
 {{ end }}

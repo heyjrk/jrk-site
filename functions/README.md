@@ -1,6 +1,6 @@
 # Email list
 
-The signup forms post to `/api/subscribe`. A honeypot field named `hp_field` is stored nowhere. A real address is written to the Cloudflare KV namespace bound as `SIGNUPS`. The key is the lowercased email, so the same address does not create a second row. The value is JSON: `email`, `created` (UTC), and `page` (which prototype they used).
+The signup forms post to `/api/subscribe`. A honeypot field named `hp_field` is stored nowhere. A real address is written to the Cloudflare KV namespace bound as `SIGNUPS`. The key is the lowercased email, so the same address does not create a second row. The value is JSON: `email`, `created` (UTC), and `page` (the page they signed up from, `/` or `/bonus/`).
 
 This branch does not create the namespace and does not deploy.
 

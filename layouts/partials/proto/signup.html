@@ -7,12 +7,13 @@
     <span class="email-label">Email</span>
     <input type="email" name="email" required autocomplete="email" inputmode="email" maxlength="254" spellcheck="false">
   </label>
-  <button type="submit">Sign up</button>
+  <button type="submit">{{ .button | default "Sign up" }}</button>
 </form>
-<p class="joined" data-joined hidden role="status" tabindex="-1">You're on the list. You'll be the first to hear about new releases.</p>
+<p class="joined" data-joined hidden role="status" tabindex="-1">{{ .thanks | default "You're on the list. You'll be the first to hear about new releases." }}</p>
 <script>
   (function () {
     if (new URLSearchParams(location.search).get("joined") !== "1") return;
+    document.querySelectorAll(".signup").forEach(function (el) { el.hidden = true; });
     document.querySelectorAll("[data-joined]").forEach(function (el) {
       el.hidden = false;
       el.focus();
