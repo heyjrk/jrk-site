@@ -1,0 +1,17 @@
+{{ if eq .kind "character" }}
+<svg class="sil" viewBox="0 0 80 120" aria-hidden="true" focusable="false">
+  <circle cx="40" cy="28" r="16"></circle>
+  <path d="M14 118c2-32 12-46 26-46s24 14 26 46"></path>
+</svg>
+{{ else if eq .kind "scene" }}
+<svg class="sil" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+  <path d="M0 72 L28 42 L48 56 L78 24 L108 52 L136 30 L160 50 L160 90 L0 90 Z"></path>
+</svg>
+{{ else }}
+<svg class="sil" viewBox="0 0 220 100" aria-hidden="true" focusable="false">
+  <rect x="8" y="8" width="98" height="38"></rect>
+  <rect x="114" y="8" width="98" height="38"></rect>
+  <rect x="8" y="54" width="62" height="38"></rect>
+  <rect x="78" y="54" width="134" height="38"></rect>
+</svg>
+{{ end }}

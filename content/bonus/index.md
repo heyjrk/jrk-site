@@ -1,5 +1,5 @@
 ---
 title: "World-building Dossier"
-description: "A world-building dossier for the Multiverse Series. The character portraits and scene illustrations are still placeholders. Sign up and the dossier is on its way."
+description: "A few pieces from the world-building dossier. The download has the full character and place files, all the art, and a Chapter 1 graphic-novel sample."
 type: bonus
 ---

@@ -4,28 +4,72 @@
   <p class="kicker">Bonus</p>
   <h1 class="page-title">{{ $s.dossierTitle }}</h1>
   <p class="lede">{{ $s.dossierPitch }}</p>
-  <p>{{ $s.dossierAsk }}</p>
 
-  <h2 class="section-label">Character portraits</h2>
+  <h2 class="section-label">Characters</h2>
   <ul class="slots">
-    {{ range seq 4 }}
     <li>
-      <div class="frame"><span class="mark">Placeholder</span></div>
-      <p class="slot-label">Character portrait {{ . }}</p>
-      <p class="slot-note">Art comes later</p>
+      <figure class="frame open">
+        <picture>
+          <source type="image/webp" srcset="/dossier/kid-420.webp 420w, /dossier/kid-720.webp 720w" sizes="(min-width: 800px) 22vw, 46vw">
+          <img src="/dossier/kid-720.jpg" srcset="/dossier/kid-420.jpg 420w, /dossier/kid-720.jpg 720w" sizes="(min-width: 800px) 22vw, 46vw" width="720" height="960" alt="Portrait of Kid." loading="eager" decoding="async">
+        </picture>
+      </figure>
+      <p class="slot-label">Kid</p>
+    </li>
+    {{ range seq 3 }}
+    <li>
+      <div class="frame locked" role="img" aria-label="Locked character portrait. In the download.">
+        {{ partial "proto/silhouette.html" (dict "kind" "character") }}
+        <span class="lock">Locked</span>
+      </div>
+      <p class="slot-label">Character</p>
+      <p class="slot-note">In the download</p>
     </li>
     {{ end }}
   </ul>
 
-  <h2 class="section-label">Scenes</h2>
+  <h2 class="section-label">Places</h2>
   <ul class="slots scenes">
-    {{ range seq 3 }}
     <li>
-      <div class="frame"><span class="mark">Placeholder</span></div>
-      <p class="slot-label">Scene illustration {{ . }}</p>
-      <p class="slot-note">Art comes later</p>
+      <figure class="frame open">
+        <picture>
+          <source type="image/webp" srcset="/dossier/taos-lake-640.webp 640w, /dossier/taos-lake-1280.webp 1280w" sizes="(min-width: 800px) 46vw, 92vw">
+          <img src="/dossier/taos-lake-1280.jpg" srcset="/dossier/taos-lake-640.jpg 640w, /dossier/taos-lake-1280.jpg 1280w" sizes="(min-width: 800px) 46vw, 92vw" width="1280" height="720" alt="Taos Lake, a cabin on a moonlit shore." loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <p class="slot-label">Taos Lake</p>
+    </li>
+    <li>
+      <figure class="frame open">
+        <picture>
+          <source type="image/webp" srcset="/dossier/cairos-640.webp 640w, /dossier/cairos-1280.webp 1280w" sizes="(min-width: 800px) 46vw, 92vw">
+          <img src="/dossier/cairos-1280.jpg" srcset="/dossier/cairos-640.jpg 640w, /dossier/cairos-1280.jpg 1280w" sizes="(min-width: 800px) 46vw, 92vw" width="1280" height="720" alt="Cairos, a city of spires above a river." loading="lazy" decoding="async">
+        </picture>
+      </figure>
+      <p class="slot-label">Cairos</p>
+    </li>
+    {{ range seq 2 }}
+    <li>
+      <div class="frame locked" role="img" aria-label="Locked scene. In the download.">
+        {{ partial "proto/silhouette.html" (dict "kind" "scene") }}
+        <span class="lock">Locked</span>
+      </div>
+      <p class="slot-label">Scene</p>
+      <p class="slot-note">In the download</p>
     </li>
     {{ end }}
+  </ul>
+
+  <h2 class="section-label">Sample</h2>
+  <ul class="slots novel">
+    <li>
+      <div class="frame locked" role="img" aria-label="Locked Chapter 1 graphic novel sample. In the download.">
+        {{ partial "proto/silhouette.html" (dict "kind" "novel") }}
+        <span class="lock">Locked</span>
+      </div>
+      <p class="slot-label">Chapter 1 graphic novel</p>
+      <p class="slot-note">In the download</p>
+    </li>
   </ul>
 
   {{ partial "proto/signup.html" (dict "page" .RelPermalink "button" "Get the dossier" "thanks" $s.dossierThanks) }}
