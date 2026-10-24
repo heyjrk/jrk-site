@@ -9,7 +9,10 @@
   </label>
   <button type="submit">{{ .button | default "Sign up" }}</button>
 </form>
-<p class="joined" data-joined hidden role="status" tabindex="-1">{{ .thanks | default "You're on the list. You'll be the first to hear about new releases." }}</p>
+<div class="joined" data-joined hidden role="status" tabindex="-1">
+  <p>{{ .thanks | default "You're on the list. You'll be the first to hear about new releases." }}</p>
+  {{ with .download }}<p><a class="download-btn" href="{{ . }}" download>{{ $.downloadLabel | default "Download" }}</a></p>{{ end }}
+</div>
 <script>
   (function () {
     if (new URLSearchParams(location.search).get("joined") !== "1") return;
